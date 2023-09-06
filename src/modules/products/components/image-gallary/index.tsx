@@ -32,7 +32,7 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
                 handleScrollTo(image.id)
               }}
             >
-              <span className="sr-only">Go to image {index + 1}</span>
+              <span className="sr-only ">Go to image {index + 1}</span>
               <Image
                 src={image.url}
                 className="absolute inset-0"
@@ -47,19 +47,19 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
           )
         })}
       </div>
-      <div className="flex flex-col flex-1 small:mx-16 gap-y-4">
+      <div className="flex flex-col flex-1 small:mx-16 gap-y-4 ">
         {images.map((image, index) => {
           return (
             <div
               ref={(image) => imageRefs.current.push(image)}
               key={image.id}
-              className="relative aspect-[29/34] w-full"
+              className="relative aspect-[29/34] w-full "
               id={image.id}
             >
               <Image
                 src={image.url}
                 priority={index <= 2 ? true : false}
-                className="absolute inset-0"
+                className="absolute inset-0 rounded-3xl border-4 p-2 border-red-500"
                 alt={`Product image ${index + 1}`}
                 fill
                 sizes="100vw"

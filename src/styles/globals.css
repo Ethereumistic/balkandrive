@@ -110,3 +110,7 @@
     @apply text-[36px] leading-[48px] font-semibold;
   }
 }
+
+.Nav .Image:hover {
+  background-image: url("/bd-black.png");
+}

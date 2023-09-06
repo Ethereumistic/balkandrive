@@ -10,15 +10,15 @@ const SkeletonProductPage = () => {
           <div className="flex items-start relative">
             <div className="hidden small:flex flex-col gap-y-4 sticky top-20">
               {repeat(2).map((index) => {
-                return <div key={index} className="h-14 w-12 bg-gray-100"></div>
+                return <div key={index} className="h-14 w-12 bg-gray-100 "></div>
               })}
             </div>
-            <div className="flex flex-col flex-1 small:mx-16 gap-y-4">
+            <div className="flex flex-col flex-1 small:mx-16 gap-y-4 ">
               {repeat(2).map((index) => {
                 return (
                   <div
                     key={index}
-                    className="relative aspect-[29/34] w-full bg-gray-100"
+                    className="relative aspect-[29/34] w-full  bg-gray-100"
                   ></div>
                 )
               })}

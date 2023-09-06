@@ -1,5 +1,6 @@
 "use client"
 
+
 import { useMobileMenu } from "@lib/context/mobile-menu-context"
 import Hamburger from "@modules/common/components/hamburger"
 import CartDropdown from "@modules/layout/components/cart-dropdown"
@@ -10,11 +11,16 @@ import clsx from "clsx"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
+import Image from "next/image"
 
 const Nav = () => {
   const pathname = usePathname()
   const [isHome, setIsHome] = useState(true)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isHovered, setIsHovered] = useState(false);
+
+
+
 
   //useEffect that detects if window is scrolled > 5px on the Y axis
   useEffect(() => {
@@ -62,6 +68,8 @@ const Nav = () => {
               "text-white group-hover:text-gray-900": isHome && !isScrolled,
             }
           )}
+          onMouseEnter={() => setIsHovered(true)} // Set hover state to true on mouse enter
+          onMouseLeave={() => setIsHovered(false)} // Set hover state to false on mouse leave
         >
           <div className="flex-1 basis-0 h-full flex items-center">
             <div className="block small:hidden">
@@ -74,14 +82,25 @@ const Nav = () => {
 
           <div className="flex items-center h-full">
             <Link href="/" className="text-xl-semi uppercase">
-              Acme
+            <Image
+                src={
+                  isHovered // Use conditional rendering to change the image source
+                    ? "/bd-black.png"
+                    : isHome && !isScrolled
+                    ? "/bd-white.png"
+                    : "/bd-black.png"
+                }
+                width={125}
+                height={125}
+                alt="Picture of the author"
+              />
             </Link>
           </div>
 
           <div className="flex items-center gap-x-6 h-full flex-1 basis-0 justify-end">
             <div className="hidden small:flex items-center gap-x-6 h-full">
               {process.env.FEATURE_SEARCH_ENABLED && <DesktopSearchModal />}
-              <Link href="/account">Account</Link>
+              <Link href="/account">Профил</Link>
             </div>
             <CartDropdown />
           </div>

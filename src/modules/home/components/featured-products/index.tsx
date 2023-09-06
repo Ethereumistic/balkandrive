@@ -20,15 +20,19 @@ const FeaturedProducts = () => {
           </p>
           <UnderlineLink href="/store">Explore products</UnderlineLink>
         </div>
-        <ul className="grid grid-cols-2 small:grid-cols-4 gap-x-4 gap-y-8">
+        <ul className="grid grid-cols-2 small:grid-cols-4 gap-x-4 gap-y-8 ">
           {data
             ? data.map((product) => (
-                <li key={product.id}>
+                <li 
+                    className=""
+                    key={product.id}>
                   <ProductPreview {...product} />
                 </li>
               ))
             : Array.from(Array(4).keys()).map((i) => (
-                <li key={i}>
+                <li 
+                    className=""
+                    key={i}>
                   <SkeletonProductPreview />
                 </li>
               ))}
