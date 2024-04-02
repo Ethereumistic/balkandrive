@@ -340,7 +340,8 @@ export const CheckoutProvider = ({ children }: CheckoutProviderProps) => {
           onPaymentCompleted,
         }}
       >
-        <Wrapper paymentSession={cart?.payment_session}>{children}</Wrapper>
+        <Wrapper paymentSession={cart?.payment_session || null}>{children}</Wrapper>
+
       </CheckoutContext.Provider>
     </FormProvider>
   )

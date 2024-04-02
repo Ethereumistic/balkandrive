@@ -1,8 +1,12 @@
 import Footer from "@modules/layout/templates/footer"
 import Nav from "@modules/layout/templates/nav"
-import React from "react"
+import React, { ReactNode } from "react"
 
-const Layout: React.FC = ({ children }) => {
+interface LayoutProps {
+  children: ReactNode;
+}
+
+const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div>
       <Nav />

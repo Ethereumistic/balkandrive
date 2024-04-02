@@ -1,20 +1,21 @@
-import { Dialog, Transition } from "@headlessui/react"
-import { ModalProvider, useModal } from "@lib/context/modal-context"
-import X from "@modules/common/icons/x"
-import clsx from "clsx"
-import React, { Fragment } from "react"
+import { Dialog, Transition } from "@headlessui/react";
+import { ModalProvider, useModal } from "@lib/context/modal-context";
+import X from "@modules/common/icons/x";
+import clsx from "clsx";
+import React, { Fragment, ReactNode } from "react";
 
 type ModalProps = {
-  isOpen: boolean
-  close: () => void
-  size?: "small" | "medium" | "large"
-}
+  isOpen: boolean;
+  close: () => void;
+  size?: "small" | "medium" | "large";
+  children: ReactNode;
+};
 
 const Modal: React.FC<ModalProps> & {
-  Title: React.FC
-  Description: React.FC
-  Body: React.FC
-  Footer: React.FC
+  Title: React.FC<{ children: ReactNode }>;
+  Description: React.FC<{ children: ReactNode }>;
+  Body: React.FC<{ children: ReactNode }>;
+  Footer: React.FC<{ children: ReactNode }>;
 } = ({ isOpen, close, size = "medium", children }) => {
   return (
     <Transition appear show={isOpen} as={Fragment}>
@@ -59,11 +60,11 @@ const Modal: React.FC<ModalProps> & {
         </div>
       </Dialog>
     </Transition>
-  )
-}
+  );
+};
 
-const Title: React.FC = ({ children }) => {
-  const { close } = useModal()
+const Title: React.FC<{ children: ReactNode }> = ({ children }) => {
+  const { close } = useModal();
 
   return (
     <Dialog.Title className="flex items-center justify-between">
@@ -74,28 +75,28 @@ const Title: React.FC = ({ children }) => {
         </button>
       </div>
     </Dialog.Title>
-  )
-}
+  );
+};
 
-const Description: React.FC = ({ children }) => {
+const Description: React.FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <Dialog.Description className="flex text-small-regular text-gray-700 items-center justify-center pt-2 pb-4 h-full">
       {children}
     </Dialog.Description>
-  )
-}
+  );
+};
 
-const Body: React.FC = ({ children }) => {
-  return <div className="flex-1">{children}</div>
-}
+const Body: React.FC<{ children: ReactNode }> = ({ children }) => {
+  return <div className="flex-1">{children}</div>;
+};
 
-const Footer: React.FC = ({ children }) => {
-  return <div className="flex items-center justify-end gap-x-4">{children}</div>
-}
+const Footer: React.FC<{ children: ReactNode }> = ({ children }) => {
+  return <div className="flex items-center justify-end gap-x-4">{children}</div>;
+};
 
-Modal.Title = Title
-Modal.Description = Description
-Modal.Body = Body
-Modal.Footer = Footer
+Modal.Title = Title;
+Modal.Description = Description;
+Modal.Body = Body;
+Modal.Footer = Footer;
 
-export default Modal
+export default Modal;
