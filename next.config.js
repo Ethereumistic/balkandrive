@@ -10,9 +10,9 @@ module.exports = withStoreConfig({
   reactStrictMode: true,
   images: {
     domains: [
-      "medusa-public-images.s3.eu-west-1.amazonaws.com",
+      "balkandrive-nxpd.vercel.app",
       "localhost",
-      "medusa-server-testing.s3.amazonaws.com",
+      "balkandrive-nxpd.vercel.app",
     ],
   },
 })
